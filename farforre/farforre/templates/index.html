@@ -1,0 +1,83 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <title>Farfor Decor</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Your site's description should be here">
+    <meta name="keywords" content="Your site's keywords should be here">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <!--[if IE 6]>
+	<style type="text/css">
+		* html .group {
+			height: 1%;
+		}
+	</style>
+  <![endif]--> 
+    <!--[if IE 7]>
+	<style type="text/css">
+		*:first-child+html .group {
+			min-height: 1px;
+		}
+	</style>
+  <![endif]--> 
+    <!--[if lt IE 9]> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script> 
+  <![endif]--> 
+  </head>
+  <body>
+    <header>
+      <div class="main-container">
+        <img class="background" src="{% static 'images/background.jpg' %}"/>
+        <a href="{% url 'home' %}">
+          <img class="farfor-logo" src="{% static 'images/farfor_logo.png' %}" alt="">
+        </a>
+        <div class="gallery-container">
+          <a href="{% url 'gallery' %}">Галерея</a>
+        </div>
+        <div class="contacts-container">
+          <a href="{% url 'contact' %}">Контакти</a>
+        </div>
+        <img class="phone-icon" src="{% static 'images/phone_icon.png' %}" alt="">
+        <div class="rent-rules-container">
+          <a href="{% url 'rules' %}">Умови оренди</a>
+        </div>
+        <div class="favorites-container">
+          <a href="{% url 'favorites' %}">Збережене</a>
+        </div>
+        <div class="search-container">
+          <a href="{% url 'search' %}">Пошук</a>
+        </div>
+        <div class="cart-container">
+          <a href="{% url 'cart' %}">Кошик</a>
+        </div>
+        <img class="cart-icon" src="{% static 'images/cart_icon.png' %}" />
+        <div class="account-container">
+          <a href="{% url 'register' %}">Акаунт споживача</a>
+        </div>
+        <img class="account-icon" src="{% static 'images/account_icon.png' %}" />
+        <div class="news-container">
+          <div class="news">Новини</div>
+        </div>
+        <div class="about-us-container">
+          <div class="about-us">Про нас</div>
+        </div>
+        <div class="social-container">
+          <div class="socials">Соціальні мережі</div>
+        </div>
+      </div>
+    </header>
+  </body>
+
+  <main>
+    <!-- Вміст головної сторінки -->
+  </main>
+
+  <footer>
+    <!-- Інформація футера -->
+  </footer> 
+  
+  </body>
+</html>

@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Картка товару - {{ product.name }}</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Ваші мета-теги та інші налаштування -->
+</head>
+<body>
+    <header>
+        <img class="background" src="{% static 'images/background.jpg' %}" alt="Фон">
+        <div class="product-container">
+            <div class="product-image">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+        </div>
+        <p class="product-prise" id="product-price">₴ {{ product.prise }}</p>
+        <div class="product-details">
+            <p class="product-article-number">Артикул: <span id="product-article-number">{{ product.article_number }}</span></p>
+            <p class="product-height"><span id="product-height">{{ product.height }}</span></p>
+            <p class="product-length"><span id="product-length">{{ product.length }}</span></p>
+            <p class="product-width"><span id="product-width">{{ product.width }}</span></p>
+            <p class="product-diameter"><span id="product-diameter">{{ product.diameter }}</span></p>
+            <p class="product-weight"><span id="product-weight">{{ product.weight }} кг</span></p>
+            <p class="product-availability"><span id="product-availability">{{ product.availability }}</span></p>
+            <p class="product-damages"><span id="product-damages">{{ product.damages }}</span></p>
+        </div>
+            <div class="quantity-and-order">
+                <div class="product-price-container">
+                    <p class="product-price" id="product-price-display">₴ {{ product.price }}</p>
+                </div>
+                <div class="quantity">
+                    <input type="number" id="quantity-input" name="quantity" min="1" value="1">
+                </div>
+                <div class="rent-button">
+                    <button type="button" onclick="placeOrder()">Орендувати</button>
+                </div>
+            </div>
+            <div class="product-variants">
+                <label for="variant-selector">Розмір:</label>
+                <select id="variant-selector">
+                    {% for variant in product.variants.all %}
+                        <option 
+                          value="{{ variant.id }}" 
+                          data-price="{{ variant.price }}" 
+                          data-availability="{{ variant.availability }}" 
+                          data-weight="{{ variant.weight }}" 
+                          data-damages="{{ variant.damages }}" 
+                          data-height="{{ variant.height }}" 
+                          data-length="{{ variant.length }}"
+                          data-width="{{ variant.width }}" 
+                          data-diameter="{{ variant.diameter }}">
+                            {{ variant.size }}
+                        </option>
+                    {% endfor %}
+                </select>
+                        
+            </div>
+            <div class="name-container">
+                <h2 class="product-name">{{ product.name }}</h2>
+            </div>
+            <div class="related-products">
+                <h3>Супутні товари</h3>
+                <div class="related-products-list">
+                    {% for related_product in product.related_products.all %}
+                        <div class="related-product">
+                            <a href="{% url 'product_detail' related_product.pk %}">
+                                <img src="{{ related_product.image.url }}" alt="{{ related_product.name }}" class="related-product-image">
+                                <p class="related-product-name">{{ related_product.name }}</p>
+                            </a>
+                        </div>
+                    {% empty %}
+                        <p>Немає супутніх товарів.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+    <script src="{% static 'js/my_script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'FarforCustomFont';
+  src: url('../fonts/FARFOR_Script.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'FarforMode';
+  src: url('../fonts/HelveticaNeueFARFOR_MODE_Light.ttf') format('truetype');
+}
+a {
+  text-decoration: none;
+  color: #000000;
+  text-align: left;
+  font-size: 25px;
+  font-weight: 400;
+  position: absolute;
+}
+body, html {
+  font-family: 'FarforCustomFont', sans-serif;
+}
+body {
+  background-color: #e1e1e1 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+header {
+  width: 1440px;
+  height: 800px;
+  position: relative;
+ overflow: hidden;
+}
+
+.background {
+width: 100%;
+height: 100%;
+position: absolute;
+left: 0;
+top: 0;
+object-fit: cover;
+}
+.farfor-logo {
+  width: 280px;
+  height: 256.6px;
+  position: absolute;
+  left: 580px;
+  top: 267px;
+  object-fit: cover;
+}
+.gallery-container, .contacts-container, .rent-rules-container, .favorites-container, .search-container,
+.news-container, .about-us-container, .cart-container {
+  background: #d9d9d9;
+  border-radius: 40px;
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center; /* Горизонтальне вирівнювання */
+  align-items: center; /* Вертикальне вирівнювання */
+}
+.social-container, .account-container {
+  background: #d9d9d9;
+  border-radius: 40px;
+  width: 508px;
+  height: 180px;
+  position: absolute;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center; /* Горизонтальне вирівнювання */
+  align-items: center; /* Вертикальне вирівнювання */
+}
+.social-container{
+  left: 54px;
+  top: 308px;
+}
+.account-container{
+  left: 880px;
+  top: 308px;
+}
+.cart-container {
+  left: 1143px;
+  top: 39px;
+}
+.gallery-container {
+  left: 838px;
+  top: 39px;
+}
+.contacts-container {
+  left: 355px;
+  top: 507px;
+}
+.rent-rules-container {
+  left: 50px;
+  top: 507px;
+}
+.favorites-container {
+  left: 1143px;
+  top: 507px;
+}
+.search-container {
+  left: 838px;
+  top: 507px;
+}
+.news-container {
+  left: 50px;
+  top: 39px;
+}
+.about-us-container {
+  left: 355px;
+  top: 39px;
+}
+
+.phone-icon {
+  width: 70.16px;
+  height: 71.34px;
+  position: absolute;
+  left: 355px;
+  top: 635px;
+  object-fit: cover;
+}
+.account-icon {
+  width: 53px;
+  height: 68px;
+  position: absolute;
+  left: 1335px;
+  top: 388px;
+  object-fit: cover;
+}
+.cart-icon {
+  width: 87px;
+  height: 69px;
+  position: absolute;
+  left: 1180px;
+  top: 220px;
+  object-fit: cover;
+}
+.product-container {
+  background: #ffffff82;
+  border-radius: 40px;
+  width: 1234px;
+  height: 756px;
+  position: absolute;
+  left: 300px;
+  top: 11px;
+  box-shadow: 1px 6px 6px 6px rgba(0.25, 0, 0, 0.25);
+}
+.product-details {
+  font-family: 'FarforMode';
+  background: #e1e1e1;
+  border-radius: 40px;
+  width: 220px;
+  height: 400px;
+  position: absolute;
+  left: 1180px;
+  top: 430px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.name-container {
+  width: 234px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 10px;
+}
+ 
+.product-name {
+  font-family: 'FarforCustomFont';
+  font-size: 50px; 
+}
+.product-article-number, .product-size, .product-weight, .product-availability,
+.product-damages, .product-height, .product-length, .product-width, .product-diameter {
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.product-image img {
+  width: auto !important;
+  height: 776px !important;
+  object-fit: cover !important;
+  border-radius: 40px;
+}
+.quantity-and-order {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  top: 170px;
+  left: 330px;
+}
+.product-prise{
+  font-family: 'FarforMode';
+  font-size: 50px;
+}
+
+.quantity input[type="number"] {
+  background: #ffffffaf;
+  width: 40px;
+  padding: 5px;
+  border: 1px solid #ccccccb9;
+  border-radius: 10px;
+}
+
+
+.quantity {
+  margin-left: 10px;
+}
+
+.rent-button button {
+  font-family: 'FarforMode';
+  font-size: 25px;
+  background: #ffffffaf;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 150px;
+  height: 30px;
+  margin-left: 20px; /* Додано відступ зліва */
+}
+
+.related-products {
+  background-color: #ccc;
+  border-radius: 40px;
+  margin-top: 10px;
+  width: 250px; /* або інший бажаний розмір */
+  height: 776px;
+  position: absolute;
+  left: 25px;
+  top: 90px;
+  display: flex; /* Використання Flexbox */
+  flex-direction: column; /* Вертикальне розміщення елементів */
+  align-items: center; /* Вирівнювання елементів по центру */
+}
+
+.related-products-list {
+  display: flex;
+  flex-direction: column;
+  padding-right: 60%;
+}
+
+.related-product {
+  margin-bottom: 150px;
+}
+
+.related-product-image {
+  width: 150px; /* або інший бажаний розмір */
+  height: auto;
+  object-fit: cover;
+}
+
+.related-product-name {
+  font-size: 16px;
+  text-align: center;
+  font-family: 'FarforMode';
+}
+.product-variants {
+  margin-top: 20px; /* Відступ зверху */
+  text-align: center; /* Вирівнювання тексту по центру */
+  position: absolute;
+  left: 400px;
+  top: 280px;
+
+}
+
+#variant-selector {
+  padding: 5px 10px; /* Внутрішній відступ */
+  border-radius: 5px; /* Закруглені краї */
+  border: 1px solid #ccc; /* Межа */
+  background-color: #ffffff; /* Колір фону */
+}
+
+.quantity-and-order {
+  margin-top: 20px; /* Додатковий відступ зверху */
+  display: flex;
+  justify-content: center; /* Вирівнювання елементів по центру */
+}
+
+.quantity input[type="number"] {
+  width: 60px; /* Ширина поля вводу */
+  margin-right: 10px; /* Відступ справа */
+}
+
+.rent-button button {
+  background-color: #dcdcdcdb; /* Колір фону */
+  color: rgb(8, 8, 8); /* Колір тексту */
+  border: none; /* Без межі */
+  padding: 10px 20px; /* Внутрішній відступ */
+  border-radius: 5px; /* Закруглені краї */
+  cursor: pointer; /* Вказівник курсору */
+}
+
+.rent-button button:hover {
+  background-color: #616161; /* Колір при наведенні */
+}
