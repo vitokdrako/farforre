@@ -18,6 +18,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='home'),
@@ -33,3 +35,5 @@ urlpatterns = [
     path('get-variant/', views.get_variant, name='get_variant'),
     path('admin/', admin.site.urls),  # Доданий URL-шлях для адміністратора
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
