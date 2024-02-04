@@ -60,17 +60,10 @@ class Order(models.Model):
     def __str__(self):
         return f"Order {self.id} - {self.status}"
     
-class ProductSet(models.Model):
-    products = models.ManyToManyField(Product, related_name='product_sets')
-    name = models.CharField(max_length=100, verbose_name="Назва набору")
-
-    def __str__(self):
-        return self.name
     
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     product_variant = models.ForeignKey(ProductVariant, on_delete=models.SET_NULL, null=True, blank=True)
-    product_set = models.ForeignKey(ProductSet, on_delete=models.SET_NULL, null=True, blank=True)
     quantity = models.IntegerField(default=1)
 
     def __str__(self):
