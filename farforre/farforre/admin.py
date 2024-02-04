@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Product, ProductVariant
 from django.urls import reverse
 from django.utils.html import format_html
+from .models import Customer, Order, OrderItem, ProductSet
 
 class ProductVariantInline(admin.TabularInline):
     model = ProductVariant
@@ -34,3 +35,25 @@ class ProductAdmin(admin.ModelAdmin):
         return ""
 
     preview_image.short_description = 'Прев\'ю'
+    
+@admin.register(Customer)
+class CustomerAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'email', 'phone_number', 'address')
+    # Додайте інші налаштування, які ви бажаєте
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'customer', 'created_at', 'status')
+    list_filter = ('status',)
+    # Додайте інші налаштування, які ви бажаєте
+
+@admin.register(OrderItem)
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = ('order', 'product_variant', 'product_set', 'quantity')
+    # Додайте інші налаштування, які ви бажаєте
+
+@admin.register(ProductSet)
+class ProductSetAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    filter_horizontal = ('products',)
+    # Додайте інші налаштування, які ви бажаєте
