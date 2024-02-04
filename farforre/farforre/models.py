@@ -34,3 +34,45 @@ class ProductVariant(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - {self.size}"
+    
+class Customer(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=15)
+    address = models.TextField()
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+    
+class Order(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Очікування'),
+        ('confirmed', 'Підтверджено'),
+        ('shipped', 'Відправлено'),
+        ('delivered', 'Доставлено'),
+    ]
+    customer = models.ForeignKey(Customer, related_name='orders', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+
+    def __str__(self):
+        return f"Order {self.id} - {self.status}"
+    
+class ProductSet(models.Model):
+    products = models.ManyToManyField(Product, related_name='product_sets')
+    name = models.CharField(max_length=100, verbose_name="Назва набору")
+
+    def __str__(self):
+        return self.name
+    
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    product_variant = models.ForeignKey(ProductVariant, on_delete=models.SET_NULL, null=True, blank=True)
+    product_set = models.ForeignKey(ProductSet, on_delete=models.SET_NULL, null=True, blank=True)
+    quantity = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.product_variant or self.product_set} x {self.quantity}"
+    
