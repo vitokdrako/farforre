@@ -1,5 +1,13 @@
+document.addEventListener('DOMContentLoaded', function() {
+    updateProductDetails(); // Викликати функцію при завантаженні сторінки
+});
+
 document.getElementById('variant-selector').addEventListener('change', function() {
-    const selectedOption = this.options[this.selectedIndex];
+    updateProductDetails(); // Викликати функцію при зміні варіанту
+});
+
+function updateProductDetails() {
+    const selectedOption = document.getElementById('variant-selector').options[document.getElementById('variant-selector').selectedIndex];
     const price = selectedOption.getAttribute('data-price');
     const availability = selectedOption.getAttribute('data-availability');
     const weight = selectedOption.getAttribute('data-weight');
@@ -9,7 +17,6 @@ document.getElementById('variant-selector').addEventListener('change', function(
     const width = selectedOption.getAttribute('data-width');
     const diameter = selectedOption.getAttribute('data-diameter');
     
-    // Оновіть дані на сторінці з отриманими значеннями
     document.querySelector('.product-availability').textContent = `Наявність: ${availability}`;
     document.querySelector('.product-weight').textContent = `Вага: ${weight} кг`;
     document.querySelector('.product-damages').textContent = `Збитки: ${damages}`;
@@ -18,6 +25,5 @@ document.getElementById('variant-selector').addEventListener('change', function(
     document.querySelector('.product-diameter').textContent = `Діаметр: ${diameter}`;
     document.querySelector('.product-height').textContent = `Висота: ${height}`;
 
-    // Оновіть ціну з урахуванням отриманого значення
     document.getElementById('product-price-display').textContent = `₴ ${price}`;
-});
+}

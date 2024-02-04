@@ -50,7 +50,9 @@
                           data-height="{{ variant.height }}" 
                           data-length="{{ variant.length }}"
                           data-width="{{ variant.width }}" 
-                          data-diameter="{{ variant.diameter }}">
+                          data-diameter="{{ variant.diameter }}"
+                          {% if product.variants.all.count == 1 %} selected {% endif %}
+                        >
                             {{ variant.size }}
                         </option>
                     {% endfor %}
