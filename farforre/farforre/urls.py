@@ -20,6 +20,7 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import add_to_cart_ajax
 
 urlpatterns = [
     path('', views.index, name='home'),
@@ -33,7 +34,9 @@ urlpatterns = [
     path('cart/', views.cart, name='cart'),
     path('product/<int:pk>/', views.product_detail, name='product_detail'),
     path('get-variant/', views.get_variant, name='get_variant'),
-    path('admin/', admin.site.urls),  # Доданий URL-шлях для адміністратора
+    path('admin/', admin.site.urls),
+    path('add-to-cart/', add_to_cart_ajax, name='add-to-cart-ajax'),
+    path('cart/', views.cart, name='cart'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

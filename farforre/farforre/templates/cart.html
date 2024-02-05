@@ -4,16 +4,22 @@
 <head>
     <title>Кошик</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
-    <!-- Інші метатеги та скрипти -->
+    {% block content %}
+<h2>Ваш кошик</h2>
+<ul>
+    {% for item in cart_items %}
+<li>
+    {{ item.variant.product.name }} ({{ item.variant.size }}) - {{ item.quantity }} шт. - ₴{{ item.variant.price }}
+</li>
+{% endfor %}
+</ul>
+<p>Загальна сума: ₴{{ total_price }}</p>
+{% endblock %}
 </head>
 <body>
     <header>
         <!-- Шапка сайту -->
     </header>
-
-    <div class="line-header"></div>
-    <!-- Контент сторінки галереї -->
-    <div class="line-header-copy"></div>
 
     <footer>
         <!-- Футер сайту -->

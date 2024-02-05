@@ -15,7 +15,6 @@
                 <img src="{{ product.image.url }}" alt="{{ product.name }}">
             </div>
         </div>
-        <p class="product-prise" id="product-price">₴ {{ product.prise }}</p>
         <div class="product-details">
             <p class="product-article-number">Артикул: <span id="product-article-number">{{ product.article_number }}</span></p>
             <p class="product-height"><span id="product-height">{{ product.height }}</span></p>
@@ -26,6 +25,12 @@
             <p class="product-availability"><span id="product-availability">{{ product.availability }}</span></p>
             <p class="product-damages"><span id="product-damages">{{ product.damages }}</span></p>
         </div>
+        <div class="cart-button-container">
+            <button id="cart-button" onclick="openCartPage()">
+                <img src="{% static 'images/cart_icon_black.png' %}" alt="Кошик">
+                <span id="cart-count">0</span>
+            </button>
+        </div>
             <div class="quantity-and-order">
                 <div class="product-price-container">
                     <p class="product-price" id="product-price-display">₴ {{ product.price }}</p>
@@ -34,7 +39,7 @@
                     <input type="number" id="quantity-input" name="quantity" min="1" value="1">
                 </div>
                 <div class="rent-button">
-                    <button type="button" onclick="placeOrder()">Орендувати</button>
+                    <button type="button" data-product-id="{{ product.id }}" onclick="addProductToCart(this)">До кошика</button>
                 </div>
             </div>
             <div class="product-variants">
@@ -81,5 +86,6 @@
     </div>
     </header>
     <script src="{% static 'js/my_script.js' %}"></script>
+        
 </body>
 </html>

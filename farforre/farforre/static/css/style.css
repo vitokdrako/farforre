@@ -211,16 +211,6 @@ object-fit: cover;
   margin-left: 10px;
 }
 
-.rent-button button {
-  font-family: 'FarforMode';
-  font-size: 25px;
-  background: #ffffffaf;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  width: 150px;
-  height: 30px;
-  margin-left: 20px; /* Додано відступ зліва */
-}
 
 .related-products {
   background-color: #ccc;
@@ -262,11 +252,11 @@ object-fit: cover;
   text-align: center; /* Вирівнювання тексту по центру */
   position: absolute;
   left: 400px;
-  top: 280px;
+  top: 230px;
 
 }
 
-#variant-selector {
+.variant-selector {
   padding: 5px 10px; /* Внутрішній відступ */
   border-radius: 5px; /* Закруглені краї */
   border: 1px solid #ccc; /* Межа */
@@ -289,10 +279,34 @@ object-fit: cover;
   color: rgb(8, 8, 8); /* Колір тексту */
   border: none; /* Без межі */
   padding: 10px 20px; /* Внутрішній відступ */
-  border-radius: 5px; /* Закруглені краї */
+  border-radius: 10px; /* Закруглені краї */
   cursor: pointer; /* Вказівник курсору */
+  font-family: 'FarforMode';
+  font-size: 15px;
+  background: #ffffffaf;
+  border: 1px solid #ccc;
 }
 
 .rent-button button:hover {
   background-color: #616161; /* Колір при наведенні */
+}
+
+.cart-button-container {
+  position: absolute; /* або relative залежно від вашої структури */
+  top: 15px; /* Відстань від верхнього краю фонового контейнера */
+  right: 15px; /* Відстань від правого краю фонового контейнера */
+  z-index: 10; /* Забезпечує, що кнопка буде над фоном */
+}
+
+#cart-button img {
+  width: auto;
+  height: 30px;
+  object-fit: cover;
+}
+
+#cart-button {
+  border: none; /* Видаляє рамку */
+  outline: none; /* Видаляє виділення при фокусі */
+  background: transparent; /* Робить фон кнопки прозорим */
+  cursor: pointer; /* Змінює курсор на вказівник, підкреслюючи, що це кнопка */
 }
