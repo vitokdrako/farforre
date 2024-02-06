@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateProductDetails();
     document.querySelectorAll('.rent-button button').forEach(button => {
         button.addEventListener('click', function() {
-            addProductToCart(this);
+            addProductToCartFromButton(this);
         });
     });
 });
@@ -55,7 +55,7 @@ function getCookie(name) {
 const csrftoken = getCookie('csrftoken');
 
 function addProductToCartFromButton(buttonElement) {
-    const variantId = buttonElement.getAttribute('data-product-id'); // Припустимо, ви використовуєте data атрибут на кнопці
+    const variantId = buttonElement.getAttribute('data-product-id'); // Використовуємо data атрибут на кнопці
     let quantity = document.getElementById('quantity-input') ? parseInt(document.getElementById('quantity-input').value, 10) : 1; // За замовчуванням 1, якщо поле не знайдено
 
     if (isNaN(quantity)) {
@@ -63,7 +63,6 @@ function addProductToCartFromButton(buttonElement) {
         return;
     }
 
-    // Відправляємо POST-запит на сервер
     fetch('/add-to-cart/', {
         method: 'POST',
         headers: {
@@ -75,21 +74,20 @@ function addProductToCartFromButton(buttonElement) {
             quantity: quantity
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+        return response.json();
+    })
     .then(data => {
         console.log('Продукт успішно додано до кошика:', data);
-        // Можливо, додати сповіщення для користувача або оновити інтерфейс
+        // Оновлюємо кількість товарів у кошику
+        if (data.cart_total !== undefined) {
+            document.getElementById('cart-count').textContent = data.cart_total;
+        }
     })
     .catch(error => {
         console.error('Помилка при відправці запиту:', error);
     });
 }
-
-// Додавання обробника подій до кнопок
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.rent-button button').forEach(button => {
-        button.addEventListener('click', function() {
-            addProductToCartFromButton(this);
-        });
-    });
-});
