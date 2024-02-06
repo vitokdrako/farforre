@@ -67,13 +67,6 @@ def save_user_customer(sender, instance, **kwargs):
 def add_to_cart_ajax(request):
     data = json.loads(request.body.decode('utf-8'))
     variant_id = data.get('variant_id')  # Змінено з product_id на variant_id
-    
-    # Переконайтеся, що variant_id є числом
-    try:
-        variant_id = int(variant_id)
-    except (ValueError, TypeError):
-        return JsonResponse({'error': 'Invalid variant ID'}, status=400)
-    
     variant = get_object_or_404(ProductVariant, pk=variant_id)  # Отримання варіанту продукту
     cart, created = Cart.objects.get_or_create(customer=request.user.customer)
     cart_item, created = CartItem.objects.get_or_create(variant=variant, cart=cart, defaults={'quantity': data.get('quantity', 1)})

@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    updateProductDetails(); // Викликати функцію при завантаженні сторінки
+    updateProductDetails();
+    document.querySelectorAll('.rent-button button').forEach(button => {
+        button.addEventListener('click', function() {
+            addProductToCart(this);
+        });
+    });
 });
 
 document.getElementById('variant-selector').addEventListener('change', function() {
@@ -49,12 +54,20 @@ function getCookie(name) {
 
 const csrftoken = getCookie('csrftoken');
 
-function addProductToCart(variantId, quantity) {
+function addProductToCartFromButton(buttonElement) {
+    const variantId = buttonElement.getAttribute('data-product-id'); // Припустимо, ви використовуєте data атрибут на кнопці
+    let quantity = document.getElementById('quantity-input') ? parseInt(document.getElementById('quantity-input').value, 10) : 1; // За замовчуванням 1, якщо поле не знайдено
+
+    if (isNaN(quantity)) {
+        console.error('quantity не є числом');
+        return;
+    }
+
+    // Відправляємо POST-запит на сервер
     fetch('/add-to-cart/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            // Використовуйте csrftoken, отриманий з кукі
             'X-CSRFToken': csrftoken,
         },
         body: JSON.stringify({
@@ -62,17 +75,21 @@ function addProductToCart(variantId, quantity) {
             quantity: quantity
         })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
-        console.log(data);
-        // Логіка обробки відповіді сервера
+        console.log('Продукт успішно додано до кошика:', data);
+        // Можливо, додати сповіщення для користувача або оновити інтерфейс
     })
-    .catch((error) => {
-        console.error('Error:', error);
+    .catch(error => {
+        console.error('Помилка при відправці запиту:', error);
     });
 }
+
+// Додавання обробника подій до кнопок
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.rent-button button').forEach(button => {
+        button.addEventListener('click', function() {
+            addProductToCartFromButton(this);
+        });
+    });
+});
