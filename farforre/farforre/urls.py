@@ -21,6 +21,7 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import add_to_cart_ajax
+from .views import get_cart_total 
 
 urlpatterns = [
     path('', views.index, name='home'),
@@ -37,6 +38,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('add-to-cart/', add_to_cart_ajax, name='add-to-cart-ajax'),
     path('cart/', views.cart, name='cart'),
+    path('path-to-get-cart-total/', get_cart_total, name='path-to-get-cart-total'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

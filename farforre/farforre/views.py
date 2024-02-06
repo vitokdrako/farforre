@@ -76,3 +76,13 @@ def add_to_cart_ajax(request):
         cart_item.save()
     
     return JsonResponse({'message': 'Product variant added to cart successfully!'})
+
+def get_cart_total(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        cart, created = Cart.objects.get_or_create(customer=customer, defaults={'total': 0})
+        cart_items = CartItem.objects.filter(cart=cart)
+        cart_total = sum(item.quantity for item in cart_items)
+    else:
+        cart_total = 0
+    return JsonResponse({'cart_total': cart_total})

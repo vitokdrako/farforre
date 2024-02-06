@@ -82,12 +82,20 @@ function addProductToCartFromButton(buttonElement) {
     })
     .then(data => {
         console.log('Продукт успішно додано до кошика:', data);
-        // Оновлюємо кількість товарів у кошику
-        if (data.cart_total !== undefined) {
-            document.getElementById('cart-count').textContent = data.cart_total;
-        }
-    })
-    .catch(error => {
-        console.error('Помилка при відправці запиту:', error);
-    });
+        
+      })
+      
+      
+      
+
+    fetch('/path-to-get-cart-total/')
+      .then(response => response.json())
+      .then(data => {
+          if (data.cart_total !== undefined) {
+              document.getElementById('cart-count').textContent = data.cart_total;
+          }
+      })
+      .catch(error => {
+          console.error('Помилка при отриманні кількості товарів у кошику:', error);
+      });
 }
