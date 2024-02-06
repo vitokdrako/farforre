@@ -296,3 +296,50 @@ object-fit: cover;
   background: transparent; /* Робить фон кнопки прозорим */
   cursor: pointer; /* Змінює курсор на вказівник, підкреслюючи, що це кнопка */
 }
+
+.cart-item-container{
+  background-color: #ccc;
+  border-radius: 40px;
+  width: 1234px;
+  height: 756px;
+  position: absolute;
+  left: 300px;
+  top: 11px;
+  box-shadow: 1px 6px 6px 6px rgba(0.25, 0, 0, 0.25);
+}
+
+.cart-items-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: start; /* Додаємо вирівнювання елементів на початку контейнера */
+  margin-bottom: 20px; /* Додаємо відступ між елементами списку */
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 50px;
+  object-fit: cover; /* Забезпечує коректне відображення зображень */
+  margin-right: 20px; /* Додаємо відступ справа від зображення */
+}
+
+.cart-item-details {
+  display: flex;
+  flex-direction: row; /* Змінюємо на горизонтальне вирівнювання */
+  align-items: center; /* Вирівнювання елементів по центру */
+  gap: 10px; /* Додаємо простір між елементами */
+}
+
+.cart-item-quantity input {
+  width: 50px; /* Встановлюємо ширину поля для введення кількості */
+}
+
+.total-price {
+  font-weight: bold;
+  margin-top: 20px; /* Додаємо відступ зверху для загальної суми */
+}
