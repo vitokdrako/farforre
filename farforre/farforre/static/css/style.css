@@ -158,7 +158,7 @@ object-fit: cover;
   height: 400px;
   position: absolute;
   left: 1180px;
-  top: 430px;
+  top: 470px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .name-container {
@@ -168,7 +168,6 @@ object-fit: cover;
   left: 50%;
   top: 10px;
 }
- 
 .product-name {
   font-family: 'FarforCustomFont';
   font-size: 50px; 
@@ -178,7 +177,6 @@ object-fit: cover;
   padding-left: 20px;
   font-size: 20px;
 }
-
 .product-image img {
   width: auto !important;
   height: 776px !important;
@@ -186,32 +184,68 @@ object-fit: cover;
   border-radius: 40px;
 }
 .quantity-and-order {
+  margin-top: 10px;
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: start;
-  top: 170px;
+  top: 130px;
   left: 330px;
 }
-.product-prise{
+.product-price{
   font-family: 'FarforMode';
-  font-size: 50px;
+  font-size: 30px;
 }
-
 .quantity input[type="number"] {
+  margin-right: 10px;
   background: #ffffffaf;
-  width: 40px;
+  width: 60px;
   padding: 5px;
   border: 1px solid #ccccccb9;
   border-radius: 10px;
 }
-
-
 .quantity {
   margin-left: 10px;
 }
-
-
+.rent-button button {
+  background-color: #dcdcdcdb; /* Колір фону */
+  color: rgb(8, 8, 8); /* Колір тексту */
+  border: none; /* Без межі */
+  padding: 10px 20px; /* Внутрішній відступ */
+  border-radius: 10px; /* Закруглені краї */
+  cursor: pointer; /* Вказівник курсору */
+  font-family: 'FarforMode';
+  font-size: 15px;
+  background: #ffffffaf;
+  border: 1px solid #ccc;
+}
+.rent-button button:hover {
+  background-color: #616161; /* Колір при наведенні */
+}
+.product-variants {
+  font-family: 'FarforMode';
+  margin-top: 20px; /* Відступ зверху */
+  text-align: center; /* Вирівнювання тексту по центру */
+  position: absolute;
+  left: 420px;
+  top: 200px;
+  background-color: #dcdcdcdb; /* Колір фону */
+  color: rgb(8, 8, 8); /* Колір тексту */
+  padding: 10px 20px; /* Внутрішній відступ */
+  border-radius: 10px; /* Закруглені краї */
+  cursor: pointer; /* Вказівник курсору */
+  font-family: 'FarforMode';
+  font-size: 16px;
+  background: #ffffffaf;
+  border: 1px solid #ccc;
+}
+.variant-selector {
+  padding: 5px 10px; /* Внутрішній відступ */
+  border-radius: 5px; /* Закруглені краї */
+  border: 1px solid #ccc; /* Межа */
+  background-color: #565555; /* Колір фону */
+  font-size: 16px;
+}
 .related-products {
   background-color: #ccc;
   border-radius: 40px;
@@ -225,86 +259,38 @@ object-fit: cover;
   flex-direction: column; /* Вертикальне розміщення елементів */
   align-items: center; /* Вирівнювання елементів по центру */
 }
-
 .related-products-list {
   display: flex;
   flex-direction: column;
   padding-right: 60%;
 }
-
 .related-product {
   margin-bottom: 150px;
 }
-
 .related-product-image {
   width: 150px; /* або інший бажаний розмір */
   height: auto;
   object-fit: cover;
+  border-radius: 10px;
 }
-
 .related-product-name {
   font-size: 16px;
   text-align: center;
   font-family: 'FarforMode';
 }
-.product-variants {
-  margin-top: 20px; /* Відступ зверху */
-  text-align: center; /* Вирівнювання тексту по центру */
-  position: absolute;
-  left: 400px;
-  top: 230px;
-
-}
-
-.variant-selector {
-  padding: 5px 10px; /* Внутрішній відступ */
-  border-radius: 5px; /* Закруглені краї */
-  border: 1px solid #ccc; /* Межа */
-  background-color: #ffffff; /* Колір фону */
-}
-
-.quantity-and-order {
-  margin-top: 20px; /* Додатковий відступ зверху */
-  display: flex;
-  justify-content: center; /* Вирівнювання елементів по центру */
-}
-
-.quantity input[type="number"] {
-  width: 60px; /* Ширина поля вводу */
-  margin-right: 10px; /* Відступ справа */
-}
-
-.rent-button button {
-  background-color: #dcdcdcdb; /* Колір фону */
-  color: rgb(8, 8, 8); /* Колір тексту */
-  border: none; /* Без межі */
-  padding: 10px 20px; /* Внутрішній відступ */
-  border-radius: 10px; /* Закруглені краї */
-  cursor: pointer; /* Вказівник курсору */
-  font-family: 'FarforMode';
-  font-size: 15px;
-  background: #ffffffaf;
-  border: 1px solid #ccc;
-}
-
-.rent-button button:hover {
-  background-color: #616161; /* Колір при наведенні */
-}
-
 .cart-button-container {
   position: absolute; /* або relative залежно від вашої структури */
-  top: 15px; /* Відстань від верхнього краю фонового контейнера */
-  right: 15px; /* Відстань від правого краю фонового контейнера */
+  top: 25px; /* Відстань від верхнього краю фонового контейнера */
+  right: 35px; /* Відстань від правого краю фонового контейнера */
   z-index: 10; /* Забезпечує, що кнопка буде над фоном */
 }
-
 #cart-button img {
   width: auto;
   height: 30px;
   object-fit: cover;
 }
-
 #cart-button {
+  font-family: 'FarforMode';
   border: none; /* Видаляє рамку */
   outline: none; /* Видаляє виділення при фокусі */
   background: transparent; /* Робить фон кнопки прозорим */
