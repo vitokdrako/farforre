@@ -55,11 +55,20 @@ function getCookie(name) {
 const csrftoken = getCookie('csrftoken');
 
 function addProductToCartFromButton(buttonElement) {
-    const variantId = buttonElement.getAttribute('data-product-id'); // Використовуємо data атрибут на кнопці
-    let quantity = document.getElementById('quantity-input') ? parseInt(document.getElementById('quantity-input').value, 10) : 1; // За замовчуванням 1, якщо поле не знайдено
+    // Отримання variantId від випадаючого списку замість data атрибуту кнопки
+    const variantSelector = document.getElementById('variant-selector');
+    const variantId = variantSelector ? variantSelector.value : null;
+
+    let quantity = document.getElementById('quantity-input') ? parseInt(document.getElementById('quantity-input').value, 10) : 1;
 
     if (isNaN(quantity)) {
         console.error('quantity не є числом');
+        return;
+    }
+
+    // Перевірка, чи variantId було обрано
+    if (!variantId) {
+        console.error('variantId не вибрано');
         return;
     }
 
@@ -82,20 +91,23 @@ function addProductToCartFromButton(buttonElement) {
     })
     .then(data => {
         console.log('Продукт успішно додано до кошика:', data);
-        
-      })
-      
-      
-      
+        // Оновлення кількості товарів у кошику
+        updateCartCount();
+    })
+    .catch(error => {
+        console.error('Помилка при додаванні товару до кошику:', error);
+    });
+}
 
+function updateCartCount() {
     fetch('/path-to-get-cart-total/')
-      .then(response => response.json())
-      .then(data => {
-          if (data.cart_total !== undefined) {
-              document.getElementById('cart-count').textContent = data.cart_total;
-          }
-      })
-      .catch(error => {
-          console.error('Помилка при отриманні кількості товарів у кошику:', error);
-      });
+    .then(response => response.json())
+    .then(data => {
+        if (data.cart_total !== undefined) {
+            document.getElementById('cart-count').textContent = data.cart_total;
+        }
+    })
+    .catch(error => {
+        console.error('Помилка при отриманні кількості товарів у кошику:', error);
+    });
 }
