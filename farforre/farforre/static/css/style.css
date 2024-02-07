@@ -298,13 +298,15 @@ object-fit: cover;
 }
 
 .cart-item-container{
+  font-family: 'FarforeMode';
+  padding: 30px 30px;
   background-color: #ccc;
   border-radius: 40px;
   width: 1234px;
-  height: 756px;
+  height: 700px;
   position: absolute;
   left: 300px;
-  top: 11px;
+  top: 18px;
   box-shadow: 1px 6px 6px 6px rgba(0.25, 0, 0, 0.25);
 }
 
@@ -322,8 +324,8 @@ object-fit: cover;
 }
 
 .cart-item-image {
-  width: 80px;
-  height: 50px;
+  width: 150px;
+  height: 80px;
   object-fit: cover; /* Забезпечує коректне відображення зображень */
   margin-right: 20px; /* Додаємо відступ справа від зображення */
 }
