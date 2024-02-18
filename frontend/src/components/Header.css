@@ -1,0 +1,57 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'FarforCustomFont';
+    src: url('../fonts/FARFOR_Script.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'FarforMode';
+    src: url('../fonts/HelveticaNeueFARFOR_MODE_Light.ttf') format('truetype');
+}
+body, html {
+    font-family: 'FarforCustomFont', sans-serif !important;
+    background-color: #e1e1e1 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+
+}
+a {
+  text-decoration: none !important; 
+}
+
+a, .link-class {
+  color: #000000 !important; /* Використання !important для забезпечення перевизначення */
+}
+
+.header-container {
+  max-width: 1440px; /* Якщо потрібно обмежити ширину контейнера */
+}
+
+.button-container {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Базове розташування для тексту */
+  width: 200px;
+  height: 200px;
+  background-color: #d9d9d9;
+  border-radius: 40px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.social-container, .account-container {
+  font-size: 20px;
+  margin: 3rem;
+  min-width: 350px;
+  height: 180px;
+  background-color: #d9d9d9; /* Ваш колір фону */
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}

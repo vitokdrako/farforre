@@ -7,9 +7,6 @@ from django.views.decorators.http import require_POST
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-
-
-
 def index(request):
     return render(request, 'index.html')
 

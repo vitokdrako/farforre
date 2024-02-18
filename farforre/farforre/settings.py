@@ -138,4 +138,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'farforre' / 'static',
+    os.path.join(BASE_DIR, 'frontend/build/static'),
 ]

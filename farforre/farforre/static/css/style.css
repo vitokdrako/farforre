@@ -30,10 +30,10 @@ body {
 }
 
 header {
-  width: 1440px;
-  height: 800px;
-  position: relative;
- overflow: hidden;
+width: 1440px;
+height: 800px;
+position: relative;
+overflow: hidden;
 }
 
 .background {
